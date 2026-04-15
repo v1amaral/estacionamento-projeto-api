@@ -1,4 +1,4 @@
-package br.com.parking.model;
+package br.com.parking.util;
 
 public class CalculoFinanceiro {
 }

@@ -2,16 +2,17 @@ package br.com.parking.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import org.hibernate.type.descriptor.jdbc.TinyIntJdbcType;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Entity
-public class Cliente {
+public class Funcionario {
     @Id
-    private String cpf;
+    private Long funcionarioId;
+    private Byte cpf;
     private String nomeCompleto;
-    private LocalDate dataNascimento;
-    private LocalTime inicioEstacionado;
+    private String usuario;
+    private String senha;
 }

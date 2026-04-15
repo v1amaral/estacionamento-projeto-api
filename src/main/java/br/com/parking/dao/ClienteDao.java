@@ -1,13 +1,12 @@
-package br.com.parking.DAO;
+package br.com.parking.dao;
 
-import br.com.parking.model.VagaEstacionamento;
+import br.com.parking.model.Cliente;
 import br.com.parking.util.EntityManagerProvider;
-import jakarta.persistence.EntityManager;
 
-public class VagaEstacionamentoDao {
+public class ClienteDao {
 
-    public void cadastrarVaga(VagaEstacionamento vagaEstacionamento){
-        EntityManagerProvider.getEm().persist(vagaEstacionamento);
+    public void cadastrarCliente(Cliente funcionario){
+        EntityManagerProvider.getEm().persist(funcionario);
     }
 
 }
