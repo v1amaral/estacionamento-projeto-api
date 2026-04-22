@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <meta charset="UTF-8" />
+    <title>Estacionamento BD</title>
+    
+    <h:outputStylesheet library="vitor" name="estilo.css" />
+    
+</h:head>
+
+<h:body>
+    <header>
+        <h:graphicImage library="vitor" name="logo.png" />
+    </header>
+
+    <div id="conteudo">
+        <h:form>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Nome completo: " for="nomeCompleto" />
+                <h:inputText id="nomeCompleto" />
+
+                <h:outputLabel value="Usuario: " for="usuario" />
+                <h:inputText id="usuario" />
+                
+                <h:outputLabel value="Senha: " for="senha" />
+                <h:inputText id="senha" />
+
+                <h:outputLabel value="Tipo empresa" for="tipo" />
+                <h:selectOneMenu id="tipo">
+                    <f:selectItem itemLabel="Selecione..." />
+                    <f:selectItem itemLabel="MEI" itemValue="MEI" />
+                    <f:selectItem itemLabel="LTDA" itemValue="LTDA" />
+                </h:selectOneMenu>
+
+                <h:outputLabel />
+                <h:commandButton value="Salvar" />
+            </h:panelGrid>
+        </h:form>
+    </div>
+
+    <footer>
+        Curso online "JSF e PrimeFaces Essencial"
+    </footer>
+</h:body>
+</html>
