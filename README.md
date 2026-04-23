@@ -7,7 +7,7 @@
    <p>Este projeto é um estudo prático focado no desenvolvimento de um sistema de estacionamento. A aplicação está em sua <strong>fase inicial</strong>, sendo utilizada como laboratório para testar tecnologias e consolidar conceitos de desenvolvimento web com Java. 🚀</p>
 
    <h2>Briefing e Evolução 📝</h2>
-    <p>O objetivo deste repositório é crescer gradualmente. À medida que os estudos avançam, o projeto será refinado e novas tecnologias poderão ser implementadas para substituir ou complementar a stack atual. Além disso, este espaço funciona como um laboratório de testes, onde novas abordagens são exploradas com o propósito de aprendizado contínuo. </p>
+    <p>O objetivo deste repositório é crescer gradualmente. À medida que os estudos avançam, o projeto será refinado e novas tecnologias poderão ser implementadas para substituir ou complementar a stack atual. </p>
 
    <h2>O que estou aprendendo e praticando neste projeto 📚 </h2>
     <ul>
