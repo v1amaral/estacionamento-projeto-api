@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <meta charset="UTF-8" />
+    <title>Cadastrados</title>
+    
+    <h:outputStylesheet library="vitor" name="estilo.css" />
+    
+</h:head>
+
+<h:body>
+    <header>
+        <h:graphicImage library="vitor" name="logo.png" />
+    </header>
+    
+    <h2>Funcionarios Cadastrados</h2>
+    
+    <div id="conteudo">
+        <h:form>
+            <p>Esta é a tela dos funcionarios cadastrados.</p>
+            
+            <p>
+                <h:commandLink value="Voltar" action="GestaoFuncionarios?faces-redirect=true"/>
+            </p>
+        </h:form>
+    </div>
+
+    <footer>
+        Site by Vitor Amaral"
+    </footer>
+</h:body>
+</html>

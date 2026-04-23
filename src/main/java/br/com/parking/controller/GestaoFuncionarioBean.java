@@ -1,13 +1,29 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package br.com.parking.controller;
 
-/**
- *
- * @author vitin
- */
-public class GestaoFuncionarioBean {
+import br.com.parking.model.Funcionario;
+import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Named;
+import java.io.Serializable;
+
+@Named
+@ViewScoped
+public class GestaoFuncionarioBean implements Serializable{
+    
+    private Funcionario funcionario = new Funcionario();
+    
+    public void salvar(){
+        System.out.println("Nome completo: " + funcionario.getNomeCompleto() + " - CPF: " + funcionario.getCpf() + " - Usuario: " + funcionario.getUsuario() + " - Senha: " + funcionario.getSenha());
+    }
+    
+    public String listarFuncionarios(){
+        return "CadastradosGestaoFuncionarios?faces-redirect=true";
+    }
+
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+    
+    
     
 }

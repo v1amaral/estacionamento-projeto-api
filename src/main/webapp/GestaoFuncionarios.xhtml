@@ -6,7 +6,7 @@
 
 <h:head>
     <meta charset="UTF-8" />
-    <title>Estacionamento BD</title>
+    <title>Estacionamento Projeto</title>
     
     <h:outputStylesheet library="vitor" name="estilo.css" />
     
@@ -21,29 +21,28 @@
         <h:form>
             <h:panelGrid columns="2">
                 <h:outputLabel value="Nome completo: " for="nomeCompleto" />
-                <h:inputText id="nomeCompleto" />
+                <h:inputText id="nomeCompleto" value="#{gestaoFuncionarioBean.funcionario.nomeCompleto}"/>
+                
+                <h:outputLabel value="CPF: " for="cpf" />
+                <h:inputText id="cpf" value="#{gestaoFuncionarioBean.funcionario.cpf}"/>
 
                 <h:outputLabel value="Usuario: " for="usuario" />
-                <h:inputText id="usuario" />
+                <h:inputText id="usuario" value="#{gestaoFuncionarioBean.funcionario.usuario}"/>
                 
                 <h:outputLabel value="Senha: " for="senha" />
-                <h:inputText id="senha" />
-
-                <h:outputLabel value="Tipo empresa" for="tipo" />
-                <h:selectOneMenu id="tipo">
-                    <f:selectItem itemLabel="Selecione..." />
-                    <f:selectItem itemLabel="MEI" itemValue="MEI" />
-                    <f:selectItem itemLabel="LTDA" itemValue="LTDA" />
-                </h:selectOneMenu>
+                <h:inputText id="senha" value="#{gestaoFuncionarioBean.funcionario.senha}"/>
 
                 <h:outputLabel />
-                <h:commandButton value="Salvar" />
+                <h:commandButton value="Salvar" actionListener="#{gestaoFuncionarioBean.salvar}" />
+                
+                <h:outputLabel />
+                <h:commandLink value="Listar funcionários" action="#{gestaoFuncionarioBean.listarFuncionarios()}" />
             </h:panelGrid>
         </h:form>
     </div>
 
     <footer>
-        Curso online "JSF e PrimeFaces Essencial"
+        Site by Vitor Amaral"
     </footer>
 </h:body>
 </html>

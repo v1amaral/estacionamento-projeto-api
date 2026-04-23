@@ -43,4 +43,22 @@ public class Funcionario {
     public String getSenha() {
         return senha;
     }
+
+    public void setCpf(Long cpf) {
+        this.cpf = cpf;
+    }
+
+    public void setNomeCompleto(String nomeCompleto) {
+        this.nomeCompleto = nomeCompleto;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+    
+    
 }
