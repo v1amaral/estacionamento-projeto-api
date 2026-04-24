@@ -6,43 +6,89 @@
 
 <h:head>
     <meta charset="UTF-8" />
-    <title>Estacionamento Projeto</title>
-    
-    <h:outputStylesheet library="vitor" name="estilo.css" />
-    
+    <title>Sistema de Estacionamento - Cadastro</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: "Segoe UI", Roboto, Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container-form {
+            width: 100%;
+            max-width: 500px;
+        }
+        .ui-panel-titlebar {
+            background: #2c3e50 !important; /* Azul escuro neutro */
+            color: white !important;
+        }
+        .footer-text {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 12px;
+            color: #999;
+        }
+        .btn-salvar {
+            background-color: #2c3e50 !important;
+            border: none !important;
+            margin-top: 10px;
+        }
+        .link-voltar {
+            display: block;
+            margin-top: 15px;
+            text-align: center;
+            text-decoration: none;
+            color: #555;
+            font-size: 14px;
+        }
+    </style>
 </h:head>
 
 <h:body>
-    <header>
-        <h:graphicImage library="vitor" name="logo.png" />
-    </header>
+    <div class="container-form">
+        <h:form id="formCad">
+            <p:messages id="messages" closable="true">
+                <p:autoUpdate />
+            </p:messages>
 
-    <div id="conteudo">
-        <h:form>
-            <h:panelGrid columns="2">
-                <h:outputLabel value="Nome completo: " for="nomeCompleto" />
-                <h:inputText id="nomeCompleto" value="#{gestaoFuncionarioBean.funcionario.nomeCompleto}"/>
-                
-                <h:outputLabel value="CPF: " for="cpf" />
-                <h:inputText id="cpf" value="#{gestaoFuncionarioBean.funcionario.cpf}"/>
+            <p:panel header="Cadastro de Funcionário">
+                <h:panelGrid columns="1" styleClass="ui-fluid" style="width: 100%">
+                    
+                    <p:outputLabel value="Nome Completo" for="nomeCompleto" />
+                    <p:inputText id="nomeCompleto" value="#{gestaoFuncionarioBean.funcionario.nomeCompleto}" 
+                                 required="true" />
 
-                <h:outputLabel value="Usuario: " for="usuario" />
-                <h:inputText id="usuario" value="#{gestaoFuncionarioBean.funcionario.usuario}"/>
-                
-                <h:outputLabel value="Senha: " for="senha" />
-                <h:inputText id="senha" value="#{gestaoFuncionarioBean.funcionario.senha}"/>
+                    <p:outputLabel value="CPF" for="cpf" style="margin-top: 8px" />
+                    <p:inputMask id="cpf" value="#{gestaoFuncionarioBean.funcionario.cpf}" 
+                                 mask="999.999.999-99" required="true" />
 
-                <h:outputLabel />
-                <h:commandButton value="Salvar" actionListener="#{gestaoFuncionarioBean.salvar}" />
-                
-                <h:outputLabel />
-                <h:commandLink value="Listar funcionários" action="#{gestaoFuncionarioBean.listarFuncionarios()}" />
-            </h:panelGrid>
+                    <p:outputLabel value="Usuário" for="usuario" style="margin-top: 8px" />
+                    <p:inputText id="usuario" value="#{gestaoFuncionarioBean.funcionario.usuario}" required="true" />
+
+                    <p:outputLabel value="Senha" for="senha" style="margin-top: 8px" />
+                    <p:password id="senha" value="#{gestaoFuncionarioBean.funcionario.senha}" 
+                                required="true" toggleMask="true" redisplay="true" />
+
+                    <p:commandButton value="Salvar Dados" 
+                                     actionListener="#{gestaoFuncionarioBean.salvar}" 
+                                     update="@form"
+                                     styleClass="btn-salvar" />
+                    
+                    <p:commandLink value="Ir para listagem de funcionários" 
+                                   action="#{gestaoFuncionarioBean.listarFuncionarios}" 
+                                   styleClass="link-voltar" 
+                                   immediate="true" />
+                </h:panelGrid>
+            </p:panel>
         </h:form>
-    </div>
 
-    <footer>
-        Site by Vitor Amaral"
-    </footer>
+        <div class="footer-text">
+            Site by Vitor Amaral
+        </div>
+    </div>
 </h:body>
 </html>

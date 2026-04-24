@@ -8,7 +8,7 @@ public class Funcionario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long funcionarioId;
     @Column(unique = true, nullable = false)
-    private Long cpf;
+    private String cpf;
     private String nomeCompleto;
     @Column(unique = true, nullable = false)
     private String usuario;
@@ -17,7 +17,7 @@ public class Funcionario {
     public Funcionario() {
     }
 
-    public Funcionario(Long cpf, String nomeCompleto, String usuario, String senha) {
+    public Funcionario(String cpf, String nomeCompleto, String usuario, String senha) {
         this.cpf = cpf;
         this.nomeCompleto = nomeCompleto;
         this.usuario = usuario;
@@ -28,7 +28,7 @@ public class Funcionario {
         return funcionarioId;
     }
 
-    public Long getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
@@ -44,7 +44,7 @@ public class Funcionario {
         return senha;
     }
 
-    public void setCpf(Long cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 

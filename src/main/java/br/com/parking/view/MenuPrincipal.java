@@ -1,8 +1,8 @@
-package br.com.parking.visual;
+package br.com.parking.view;
 
 import br.com.parking.dao.FuncionarioDao;
 import br.com.parking.model.Funcionario;
-import br.com.parking.util.EntityManagerProvider;
+import br.com.parking.service.EntityManagerProvider;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 

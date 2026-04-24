@@ -9,8 +9,8 @@ import jakarta.persistence.Id;
 public class VagaEstacionamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int vagaId;
-    private boolean ocupada;
+    private Long vagaId;
+    private Boolean ocupada;
 
     public VagaEstacionamento() {
     }
@@ -27,7 +27,7 @@ public class VagaEstacionamento {
         this.ocupada = ocupada;
     }
 
-    public int getVagaId() {
+    public Long getVagaId() {
         return vagaId;
     }
 }

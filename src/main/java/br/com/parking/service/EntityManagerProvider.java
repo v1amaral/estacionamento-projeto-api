@@ -1,4 +1,4 @@
-package br.com.parking.util;
+package br.com.parking.service;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
