@@ -59,27 +59,27 @@
                 <h:panelGrid columns="1" styleClass="ui-fluid" style="width: 100%">
                     
                     <p:outputLabel value="Nome Completo" for="nomeCompleto" />
-                    <p:inputText id="nomeCompleto" value="#{gestaoFuncionarioBean.funcionario.nomeCompleto}" 
+                    <p:inputText id="nomeCompleto" value="#{funcionarioBean.funcionario.nomeCompleto}" 
                                  required="true" />
 
                     <p:outputLabel value="CPF" for="cpf" style="margin-top: 8px" />
-                    <p:inputMask id="cpf" value="#{gestaoFuncionarioBean.funcionario.cpf}" 
+                    <p:inputMask id="cpf" value="#{funcionarioBean.funcionario.cpf}" 
                                  mask="999.999.999-99" required="true" />
 
                     <p:outputLabel value="Usuário" for="usuario" style="margin-top: 8px" />
-                    <p:inputText id="usuario" value="#{gestaoFuncionarioBean.funcionario.usuario}" required="true" />
+                    <p:inputText id="usuario" value="#{funcionarioBean.funcionario.usuario}" required="true" />
 
                     <p:outputLabel value="Senha" for="senha" style="margin-top: 8px" />
-                    <p:password id="senha" value="#{gestaoFuncionarioBean.funcionario.senha}" 
+                    <p:password id="senha" value="#{funcionarioBean.funcionario.senha}" 
                                 required="true" toggleMask="true" redisplay="true" />
 
                     <p:commandButton value="Salvar Dados" 
-                                     actionListener="#{gestaoFuncionarioBean.salvar}" 
+                                     actionListener="#{funcionarioBean.salvar}" 
                                      update="@form"
                                      styleClass="btn-salvar" />
                     
                     <p:commandLink value="Ir para listagem de funcionários" 
-                                   action="#{gestaoFuncionarioBean.listarFuncionarios}" 
+                                   action="#{funcionarioBean.listarFuncionarios}" 
                                    styleClass="link-voltar" 
                                    immediate="true" />
                 </h:panelGrid>
