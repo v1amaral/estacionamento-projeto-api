@@ -37,7 +37,6 @@
         <h:panelGrid columns="1" style="margin: 20px auto; width: 850px;">
             <p:card>
                 <f:facet name="title">
-                    <i class="pi pi-car" style="margin-right: 6px;"></i>
                     Vagas
                 </f:facet>
 
@@ -48,7 +47,11 @@
                              selection="#{vagaEstacionamentoBean.vagaSelecionada}" 
                              selectionMode="single"
                              stripedRows="true"
-                             size="small">
+                             size="small"
+                             emptyMessage="Nenhuma vaga a ser lista."
+                             paginator="true"
+                             rows="10"
+                             paginatorPosition="bottom">
 
                     <p:column headerText="ID" width="50" style="text-align: center">
                         <h:outputText value="#{vaga.vagaId}" />
