@@ -15,65 +15,79 @@
 
 <h:body>
     <h:form id="mainForm">
-        
-        <div style="padding: 10px;">
-            <p:commandButton icon="pi pi-bars" type="button" 
-                             onclick="PF('sidebarVar').show()" 
-                             styleClass="ui-button-flat" 
-                             value="Menu" />
-        </div>
-
-        <p:sidebar widgetVar="sidebarVar" baseZIndex="10000">
-            <p:panelMenu style="width:300px">
-                <p:submenu label="Opções"></p:submenu>
-            </p:panelMenu>
+        <p:sidebar widgetVar="telaCliente" position="right" styleClass="custom-sidebar">
+            <h3>Dados cliente</h3>
         </p:sidebar>
+    <h:panelGrid columns="1" style="margin: 0 auto; width: 850px;">
+                <p:messages id="messages" closable="false">
+                    <p:autoUpdate />
+                </p:messages>
+        <p:card>
+            <f:facet name="title">Vagas</f:facet>
+            <div style="margin: 20px auto; width: 850px; display: flex; gap: 10px;">
+                <p:menuButton value="Ações" buttonStyleClass="ui-button-secondary">
+                    <p:menuitem value="Visualizar Cliente" 
+                                 action="#{vagaEstacionamentoBean.visualizar()}"
+                                 icon="pi pi-search" 
+                                 process="@this tabelaVagas"
+                                 update="messages"
+                                 id="btnVisualizar"
+                                 onclick="PF('telaCliente').show()"
+                                 styleClass="ui-button-info"/>
+                    <p:menuitem value="Cobrança Saída" 
+                                 icon="pi pi-dollar" 
+                                 process="@this tabelaVagas"
+                                 update="messages"
+                                 id="btnCobranca"
+                                 styleClass="ui-button-success" />
+                    <p:menuitem value="Vincular cliente" 
+                                 icon="pi pi-plus" 
+                                 process="@this tabelaVagas"
+                                 update="messages"
+                                 id="btnVincular"
+                                 styleClass="ui-button-success" />
+                </p:menuButton>
+            </div>
+            <p:dataTable id="tabelaVagas" 
+                         value="#{vagaEstacionamentoBean.vagas}" 
+                         var="vaga" 
+                         rowKey="#{vaga.vagaId}"
+                         selection="#{vagaEstacionamentoBean.vagaSelecionada}" 
+                         selectionMode="single"
+                         stripedRows="true"
+                         filteredValue="#{dtFilterView.filteredCustomers3}"
+                         globalFilterFunction="#{dtFilterView.globalFilterFunction}"
+                         size="small"
+                         paginator="true"
+                         rows="10"
+                         paginatorPosition="bottom">
 
-        <p:contextMenu for="tabelaVagas">
-            <p:menuitem value="Visualizar" icon="pi pi-search" update="mainForm" />
-            <p:menuitem value="Liberar Vaga" icon="pi pi-times" update="tabelaVagas" />
-        </p:contextMenu>
+                <p:column headerText="Status" width="65" style="text-align: center" sortBy="#{vaga.ocupada}" >
+                    <p:tag severity="danger" value="Ocupada" rendered="#{vaga.ocupada}" />
+                    <p:tag styleClass="mr-2" severity="success" value="Disponível" rendered="#{not vaga.ocupada}" />
+                </p:column>
+                
+                <p:column headerText="ID" width="45" style="text-align: center" sortBy="#{vaga.vagaId}">
+                    <h:outputText value="#{vaga.vagaId}" />
+                </p:column>
 
-        <h:panelGrid columns="1" style="margin: 20px auto; width: 850px;">
-            <p:card>
-                <f:facet name="title">
-                    Vagas
-                </f:facet>
+                <p:column headerText="Cliente" sortBy="#{vaga.cliente.nomeCompleto}">
+                    <h:outputText value="#{vaga.cliente.nomeCompleto}" rendered="#{vaga.ocupada}" />
+                    <h:outputText value="---" rendered="#{not vaga.ocupada}" style="color: #999" />
+                </p:column>
+                
+                <p:column headerText="CPF" sortBy="#{vaga.cliente.cpf}">
+                    <h:outputText value="#{vaga.cliente.cpfFormatado}" rendered="#{vaga.ocupada}" />
+                    <h:outputText value="---" rendered="#{not vaga.ocupada}" style="color: #999" />
+                </p:column>
 
-                <p:dataTable id="tabelaVagas" 
-                             value="#{vagaEstacionamentoBean.vagas}" 
-                             var="vaga" 
-                             rowKey="#{vaga.vagaId}"
-                             selection="#{vagaEstacionamentoBean.vagaSelecionada}" 
-                             selectionMode="single"
-                             stripedRows="true"
-                             size="small"
-                             emptyMessage="Nenhuma vaga a ser lista."
-                             paginator="true"
-                             rows="10"
-                             paginatorPosition="bottom">
+                <p:column headerText="Permanência" width="150" style="text-align: center" sortBy="#{vaga.inicioEstacionado}">
+                    <h:outputText value="#{vaga.tempoEstacionado()}" />
+                </p:column>
 
-                    <p:column headerText="ID" width="50" style="text-align: center">
-                        <h:outputText value="#{vaga.vagaId}" />
-                    </p:column>
-
-                    <p:column headerText="Cliente">
-                        <h:outputText value="#{vaga.cliente.nomeCompleto}" rendered="#{vaga.ocupada}" />
-                        <h:outputText value="Disponível" rendered="#{not vaga.ocupada}" style="color: #999" />
-                    </p:column>
-                    
-                    <p:column headerText="CPF">
-                        <h:outputText value="#{vaga.cliente.cpf}" rendered="#{vaga.ocupada}" />
-                        <h:outputText value="---" rendered="#{not vaga.ocupada}" style="color: #999" />
-                    </p:column>
-
-                    <p:column headerText="Permanência" width="150" style="text-align: center">
-                        <h:outputText value="#{vaga.tempoEstacionado()}" />
-                    </p:column>
-
-                </p:dataTable>
-            </p:card>
-        </h:panelGrid>
-    </h:form>
+            </p:dataTable>
+        </p:card>
+    </h:panelGrid>
+</h:form>
 </h:body>
 </html>

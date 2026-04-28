@@ -68,7 +68,7 @@ public String logar() {
         return null;
     }
 }
-    
+
     public String paginaFuncionarios(){
         return "Funcionarios?faces-redirect=true";
     }

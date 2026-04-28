@@ -1,22 +1,26 @@
 package br.com.parking.model;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import java.time.Duration;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 
 @Entity
 public class VagaEstacionamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long vagaId;
+    @Nullable
     private Boolean ocupada;
+    @Nullable
     @OneToOne
     private Cliente cliente;
+    @Nullable
     private LocalTime inicioEstacionado;
 
     public VagaEstacionamento() {
@@ -56,7 +60,7 @@ public class VagaEstacionamento {
     
     public String tempoEstacionado() {
         if (this.inicioEstacionado == null) {
-            return "Disponível";
+            return "---";
         }
 
         Duration duracao = Duration.between(this.inicioEstacionado, LocalTime.now());

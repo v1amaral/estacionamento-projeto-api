@@ -4,6 +4,8 @@ package br.com.parking.controller;
 import br.com.parking.dao.VagaEstacionamentoDao;
 import br.com.parking.model.VagaEstacionamento;
 import br.com.parking.service.EntityManagerProvider;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Named;
 import jakarta.persistence.EntityManager;
@@ -38,7 +40,12 @@ public class VagaEstacionamentoBean implements Serializable{
     }
     
     public void todasVagas(){
-        this.vagas = (List<VagaEstacionamento>) dao.listarVagas();
+        this.vagas = dao.listarVagas();
+    }
+    
+    public void visualizar(){
+        FacesContext.getCurrentInstance().addMessage(null, 
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR, vagaSelecionada.getCliente().getNomeCompleto(), ""));
     }
     
     
