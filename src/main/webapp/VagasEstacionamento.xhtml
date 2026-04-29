@@ -15,7 +15,7 @@
 
 <h:body>
     <h:form id="mainForm">
-        <p:sidebar widgetVar="telaCliente" position="right" styleClass="custom-sidebar">
+        <p:sidebar widgetVar="telaCliente" fullScreen="true">
             <h3>Dados cliente</h3>
         </p:sidebar>
     <h:panelGrid columns="1" style="margin: 0 auto; width: 850px;">
@@ -51,18 +51,28 @@
             <p:dataTable id="tabelaVagas" 
                          value="#{vagaEstacionamentoBean.vagas}" 
                          var="vaga" 
+                         widgetVar="tabelaVagas"
                          rowKey="#{vaga.vagaId}"
                          selection="#{vagaEstacionamentoBean.vagaSelecionada}" 
                          selectionMode="single"
                          stripedRows="true"
-                         filteredValue="#{dtFilterView.filteredCustomers3}"
-                         globalFilterFunction="#{dtFilterView.globalFilterFunction}"
+                         filteredValue="#{vagaEstacionamentoBean.vagasFiltradas}"
+                         globalFilterFunction="#{filtragemBean.filtroGlobal}"
                          size="small"
                          paginator="true"
                          rows="10"
                          paginatorPosition="bottom">
+                <f:facet name="header">
+                    <div style="text-align: right;">
+                        <h:outputText value="Pesquisar: " />
+                        <p:inputText id="globalFilter" 
+                                     onkeyup="PF('tabelaVagas').filter()" 
+                                     placeholder="Busque com palavras-chave" 
+                                     style="width:250px" />
+                    </div>
+                </f:facet>
 
-                <p:column headerText="Status" width="65" style="text-align: center" sortBy="#{vaga.ocupada}" >
+                <p:column headerText="Status" width="75" style="text-align: center" sortBy="#{vaga.ocupada}" >
                     <p:tag severity="danger" value="Ocupada" rendered="#{vaga.ocupada}" />
                     <p:tag styleClass="mr-2" severity="success" value="Disponível" rendered="#{not vaga.ocupada}" />
                 </p:column>
@@ -71,7 +81,7 @@
                     <h:outputText value="#{vaga.vagaId}" />
                 </p:column>
 
-                <p:column headerText="Cliente" sortBy="#{vaga.cliente.nomeCompleto}">
+                <p:column headerText="Nome cliente" sortBy="#{vaga.cliente.nomeCompleto}">
                     <h:outputText value="#{vaga.cliente.nomeCompleto}" rendered="#{vaga.ocupada}" />
                     <h:outputText value="---" rendered="#{not vaga.ocupada}" style="color: #999" />
                 </p:column>

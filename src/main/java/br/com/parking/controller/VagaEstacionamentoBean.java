@@ -22,6 +22,15 @@ public class VagaEstacionamentoBean implements Serializable{
     private VagaEstacionamento vagaEstacionamento = new VagaEstacionamento();
     private List<VagaEstacionamento> vagas = new ArrayList();
     private VagaEstacionamento vagaSelecionada; 
+    private List<VagaEstacionamento> vagasFiltradas;
+
+    public List<VagaEstacionamento> getVagasFiltradas() {
+        return vagasFiltradas;
+    }
+
+    public void setVagasFiltradas(List<VagaEstacionamento> vagasFiltradas) {
+        this.vagasFiltradas = vagasFiltradas;
+    }
 
     public VagaEstacionamento getVagaSelecionada() {
         return vagaSelecionada;

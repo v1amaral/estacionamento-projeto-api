@@ -7,7 +7,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import java.time.Duration;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Entity
@@ -71,5 +70,13 @@ public class VagaEstacionamento {
         return String.format("%02dh%02d", horas, minutos);
     }
     
+    public String ocupadoStr() {
+        if(ocupada){
+            return "Ocupada";
+        } else{
+            return "Disponível";
+        }
+        
+    }
     
 }
